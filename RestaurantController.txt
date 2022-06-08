@@ -1,0 +1,6 @@
+@KafkaListener(groupId = "review_topic-1", topics = "review_topic", containerFactory = "userKafkaListenerContainerFactory")
+    public void updateRatings(@Validated @NotNull UpdateRestaurantRatingDTO updateRestaurantRating){
+        log.info("Request to update rating for restaurant with id: "+updateRestaurantRating.getRestaurantId());
+        restaurantService.updateRating(updateRestaurantRating.getRestaurantId()
+                , updateRestaurantRating.getRating());
+    }
